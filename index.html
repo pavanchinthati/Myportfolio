@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pavan Kumar Chinthati - Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta name="description" content="Portfolio of Pavan Kumar Chinthati, Software Engineer specializing in Python, FastAPI, Kubernetes and Cybersecurity.">
   <style>
     * {
       box-sizing: border-box;
@@ -77,6 +79,21 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
 
+    .download-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #0284c7;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background-color: #0369a1;
+    }
+
     footer {
       text-align: center;
       margin-top: 4rem;
@@ -91,6 +108,7 @@
       <h1>Pavan Kumar Chinthati</h1>
       <p>Software Engineer</p>
       <p>Email: <a href="mailto:chinthatipavanchowdary@gmail.com">chinthatipavanchowdary@gmail.com</a> | Phone: +91 9182564738</p>
+      <a href="Pavan_Kumar_Chinthati_Resume.pdf" class="download-btn" download>📄 Download Resume</a>
     </header>
 
     <section class="section">
@@ -136,6 +154,15 @@
         <li>Engineered end-to-end rule management pipelines with Flink and Kafka.</li>
         <li>Collaborated with security analysts to fine-tune rule accuracy.</li>
         <li>Documented systems for smooth handovers and maintenance.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>Real-Time Alert System</strong> – Developed a log monitoring service with Python, Kafka, and Flink to identify and alert anomalies.</li>
+        <li><strong>Rule Management Engine</strong> – Built a system to convert UI-based Sigma rules into Flink SQL queries for live stream detection.</li>
+        <li><strong>Kubernetes Optimizer</strong> – Wrote CronJobs to auto-optimize Trino tables, enhancing performance and reliability.</li>
       </ul>
     </section>
 
