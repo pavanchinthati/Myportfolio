@@ -1,806 +1,170 @@
-:root {
-    --primary-navy: #1e3a8a;
-    --secondary-navy: #1e40af;
-    --accent-blue: #3b82f6;
-    --light-blue: #dbeafe;
-    --dark-gray: #374151;
-    --medium-gray: #6b7280;
-    --light-gray: #f9fafb;
-    --border-gray: #e5e7eb;
-    --white: #ffffff;
-    --black: #111827;
-    --success-green: #059669;
-    --warning-amber: #d97706;
-    
-    --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-    --gradient-subtle: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
-    
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    
-    --border-radius-sm: 0.375rem;
-    --border-radius-md: 0.5rem;
-    --border-radius-lg: 0.75rem;
-    --border-radius-xl: 1rem;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    color: var(--dark-gray);
-    background: var(--white);
-    overflow-x: hidden;
-}
-
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Merriweather', serif;
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--black);
-}
-
-/* Container */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Navigation */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-gray);
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-.navbar.scrolled {
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: var(--shadow-md);
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0;
-}
-
-.logo {
-    font-family: 'Merriweather', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-navy);
-    text-decoration: none;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-link {
-    color: var(--dark-gray);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius-md);
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--primary-navy);
-    background: var(--light-blue);
-}
-
-.mobile-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--dark-gray);
-    cursor: pointer;
-}
-
-/* Hero Section */
-.hero {
-    padding: 8rem 0 6rem;
-    background: var(--gradient-subtle);
-    border-bottom: 1px solid var(--border-gray);
-}
-
-.hero-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.hero-text h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    color: var(--black);
-}
-
-.hero-subtitle {
-    font-size: 1.5rem;
-    color: var(--primary-navy);
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-}
-
-.hero-description {
-    font-size: 1.125rem;
-    color: var(--medium-gray);
-    margin-bottom: 2rem;
-    line-height: 1.7;
-}
-
-.hero-cta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.btn {
-    padding: 0.875rem 2rem;
-    border: none;
-    border-radius: var(--border-radius-md);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.btn-primary {
-    background: var(--primary-navy);
-    color: var(--white);
-    box-shadow: var(--shadow-md);
-}
-
-.btn-primary:hover {
-    background: var(--secondary-navy);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-}
-
-.btn-outline {
-    background: transparent;
-    color: var(--primary-navy);
-    border: 2px solid var(--primary-navy);
-}
-
-.btn-outline:hover {
-    background: var(--primary-navy);
-    color: var(--white);
-    transform: translateY(-2px);
-}
-
-.hero-image {
-    display: flex;
-    justify-content: center;
-}
-
-.profile-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius-xl);
-    box-shadow: var(--shadow-xl);
-    text-align: center;
-    border: 1px solid var(--border-gray);
-}
-
-.profile-avatar {
-    width: 120px;
-    height: 120px;
-    background: var(--gradient-primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    color: var(--white);
-    margin: 0 auto 1.5rem;
-}
-
-.profile-info h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-}
-
-.profile-info p {
-    color: var(--medium-gray);
-    font-size: 0.875rem;
-}
-
-/* Section Styles */
-.section {
-    padding: 6rem 0;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease;
-}
-
-.section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--black);
-}
-
-.section-subtitle {
-    font-size: 1.125rem;
-    color: var(--medium-gray);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* About Section */
-.about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-}
-
-.about-text {
-    font-size: 1.125rem;
-    line-height: 1.8;
-    color: var(--dark-gray);
-}
-
-.about-text p {
-    margin-bottom: 1.5rem;
-}
-
-.about-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-}
-
-.stat-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
-    text-align: center;
-    border: 1px solid var(--border-gray);
-    transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary-navy);
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    color: var(--medium-gray);
-    font-weight: 500;
-}
-
-/* Skills Section */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.skill-category {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-gray);
-    transition: all 0.3s ease;
-}
-
-.skill-category:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-}
-
-.skill-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.skill-icon {
-    width: 50px;
-    height: 50px;
-    background: var(--light-blue);
-    border-radius: var(--border-radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-navy);
-    font-size: 1.25rem;
-}
-
-.skill-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-}
-
-.skill-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-
-.skill-tag {
-    background: var(--light-gray);
-    color: var(--dark-gray);
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius-sm);
-    font-size: 0.875rem;
-    font-weight: 500;
-    border: 1px solid var(--border-gray);
-    transition: all 0.3s ease;
-}
-
-.skill-tag:hover {
-    background: var(--primary-navy);
-    color: var(--white);
-    transform: translateY(-2px);
-}
-
-/* Experience Section */
-.experience-item {
-    background: var(--white);
-    padding: 2.5rem;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-gray);
-    border-left: 4px solid var(--primary-navy);
-    transition: all 0.3s ease;
-}
-
-.experience-item:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-}
-
-.experience-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.job-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.company-name {
-    color: var(--primary-navy);
-    font-size: 1.125rem;
-    font-weight: 600;
-}
-
-.duration {
-    background: var(--light-blue);
-    color: var(--primary-navy);
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius-sm);
-    font-size: 0.875rem;
-    font-weight: 600;
-    white-space: nowrap;
-}
-
-.job-description {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--dark-gray);
-}
-
-/* Education Section */
-.education-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-}
-
-.education-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-gray);
-    transition: all 0.3s ease;
-}
-
-.education-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-}
-
-.degree-title {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: var(--black);
-}
-
-.institution {
-    color: var(--medium-gray);
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-/* Contact Section */
-.contact-section {
-    background: var(--light-gray);
-    border-top: 1px solid var(--border-gray);
-}
-
-.contact-content {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.contact-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-gray);
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.contact-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-}
-
-.contact-icon {
-    width: 60px;
-    height: 60px;
-    background: var(--light-blue);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-navy);
-    font-size: 1.5rem;
-    margin: 0 auto 1rem;
-}
-
-.contact-title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.contact-info {
-    color: var(--medium-gray);
-    font-size: 0.875rem;
-}
-
-/* Footer */
-.footer {
-    background: var(--black);
-    color: var(--white);
-    padding: 3rem 0;
-    text-align: center;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-.footer-text {
-    color: var(--medium-gray);
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-link {
-    width: 40px;
-    height: 40px;
-    background: var(--dark-gray);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.social-link:hover {
-    background: var(--primary-navy);
-    transform: translateY(-2px);
-}
-
-/* Scroll Progress */
-.scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: var(--primary-navy);
-    z-index: 1001;
-    transition: width 0.1s ease;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        text-align: center;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Pavan Kumar Chinthati, Software Engineer specializing in Python, FastAPI, Kubernetes and Cybersecurity.">
+  <title>Pavan Kumar Chinthati - Portfolio</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-papb6CkY0ZP+y1ksGp3SgOAVTn+b9rpwBMSzQJptvJbM2KnZpqXUvEMefB8c2JrTzwobHJpSg+YQukA3kgrUDg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #ffffff, #f0f9ff);
+      color: #1f2937;
     }
-    
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .mobile-toggle {
-        display: block;
-    }
-    
-    .nav-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--white);
-        flex-direction: column;
-        padding: 1rem;
-        box-shadow: var(--shadow-md);
-        transform: translateY(-100%);
-        opacity: 0;
-        transition: all 0.3s ease;
-        pointer-events: none;
-    }
-    
-    .nav-menu.active {
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: all;
-    }
-    
-    .hero {
-        padding: 6rem 0 4rem;
-    }
-    
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .about-stats {
-        grid-template-columns: 1fr;
-    }
-    
-    .experience-header {
-        flex-direction: column;
-        align-items: start;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
     .container {
-        padding: 0 15px;
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
-    
-    .hero-text h1 {
-        font-size: 2rem;
+    header {
+      text-align: center;
     }
-    
+    h1 {
+      font-size: 3rem;
+      color: #0ea5e9;
+    }
+    h2 {
+      font-size: 2rem;
+      color: #0369a1;
+      border-bottom: 2px solid #bae6fd;
+      padding-bottom: 0.5rem;
+      margin-top: 2.5rem;
+    }
+    h3 {
+      font-size: 1.3rem;
+      color: #0284c7;
+      margin-top: 1.5rem;
+    }
+    ul { padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    a {
+      color: #0284c7;
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
     .section {
-        padding: 4rem 0;
+      margin: 2rem 0;
+      background-color: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
-    
-    .skill-category,
-    .experience-item,
-    .education-card,
-    .contact-card {
-        padding: 1.5rem;
+    .download-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #0284c7;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s ease;
     }
-}
-
-JavaScript File (script.js):
-
-// Mobile menu toggle
-const mobileToggle = document.getElementById('mobileToggle');
-const navMenu = document.getElementById('navMenu');
-
-mobileToggle.addEventListener('click', function() {
-    navMenu.classList.toggle('active');
-    const icon = this.querySelector('i');
-    icon.classList.toggle('fa-bars');
-    icon.classList.toggle('fa-times');
-});
-
-// Navbar scroll effect
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', function() {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+    .download-btn:hover { background-color: #0369a1; }
+    .icon-text { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem; }
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #bae6fd;
+      margin: 0 auto 1rem;
     }
-});
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      color: #64748b;
+    }
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="avatar.jpg" alt="Profile Photo" class="profile-img">
+      <h1>Pavan Kumar Chinthati</h1>
+      <p class="icon-text"><i class="fas fa-envelope"></i><a href="mailto:chinthatipavanchowdary@gmail.com">chinthatipavanchowdary@gmail.com</a></p>
+      <p class="icon-text"><i class="fas fa-phone"></i>+91 9182564738</p>
+      <a href="Pavan_Kumar_Chinthati_Resume.pdf" class="download-btn" download>📄 Download Resume</a>
+    </header>
 
-// Scroll progress
-window.addEventListener('scroll', function() {
-    const scrollProgress = document.getElementById('scrollProgress');
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercent = (scrollTop / scrollHeight) * 100;
-    scrollProgress.style.width = scrollPercent + '%';
-});
+    <section class="section">
+      <h2>Objective</h2>
+      <p>
+        A dynamic and results-driven software engineer with over 3 years of experience in product development,
+        microservices architecture, and cloud-based solutions. I am seeking a challenging role where I can leverage my
+        expertise in Python, Django, REST APIs, and database management to drive innovative projects.
+      </p>
+    </section>
 
-// Smooth scroll navigation
-const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('section[id]');
+    <section class="section">
+      <h2>Technical Skills</h2>
+      <ul>
+        <li><i class="fas fa-code"></i> Python, JavaScript</li>
+        <li><i class="fas fa-cubes"></i> Django, FastAPI, GraphQL</li>
+        <li><i class="fas fa-database"></i> PostgreSQL, Trino, GraphDB</li>
+        <li><i class="fas fa-stream"></i> Kafka, Flink</li>
+        <li><i class="fas fa-cloud"></i> AWS (S3, Lambda, SQS), Kubernetes</li>
+        <li><i class="fas fa-shield-alt"></i> SIEM (Security Information and Event Management)</li>
+        <li><i class="fas fa-code-branch"></i> Git</li>
+        <li><i class="fas fa-desktop"></i> Linux, Windows</li>
+        <li><i class="fas fa-sync"></i> Agile (Scrum)</li>
+      </ul>
+    </section>
 
-navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        
-        if (targetSection) {
-            const offsetTop = targetSection.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
+    <section class="section">
+      <h2>Professional Experience</h2>
+      <h3>Software Engineer – Blusapphire Cyber Systems Pvt Ltd (Feb 2022 – Present)</h3>
+      <ul>
+        <li>Built scalable microservices using FastAPI, Django, and Python with RESTful APIs.</li>
+        <li>Reduced MTTR by 40% using automated log alerting systems.</li>
+        <li>Optimized Trino performance via CronJobs and indexing strategies.</li>
+        <li>Integrated Kafka & Flink for real-time threat detection pipelines.</li>
+        <li>Developed rule conversion engine from Sigma to Flink SQL.</li>
+        <li>Collaborated cross-functionally with security teams to fine-tune detection logic.</li>
+      </ul>
+    </section>
 
-        // Close mobile menu
-        navMenu.classList.remove('active');
-        const icon = mobileToggle.querySelector('i');
-        icon.classList.add('fa-bars');
-        icon.classList.remove('fa-times');
-    });
-});
+    <section class="section">
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>Real-Time Alert System</strong> – Built a log monitoring service using Python, Kafka, and Flink. <a href="#">[GitHub]</a></li>
+        <li><strong>Rule Management Engine</strong> – Automated rule conversion using Sigma + Flink SQL. <a href="#">[Live Demo]</a></li>
+        <li><strong>Kubernetes Optimizer</strong> – Scheduled CronJobs to maintain and optimize Trino table structure.</li>
+      </ul>
+    </section>
 
-// Update active navigation
-window.addEventListener('scroll', function() {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.clientHeight;
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-            current = section.getAttribute('id');
-        }
-    });
+    <section class="section">
+      <h2>Certifications</h2>
+      <ul>
+        <li>AWS Certified Cloud Practitioner (Planned)</li>
+        <li>Kubernetes for Developers (in-progress)</li>
+      </ul>
+    </section>
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').substring(1) === current) {
-            link.classList.add('active');
-        }
-    });
-});
+    <section class="section">
+      <h2>Education</h2>
+      <ul>
+        <li><strong>B.Tech in Electronics & Communication Engineering</strong> – Amrita Sai Institute Of Science & Technology, Paritala</li>
+        <li><strong>Intermediate</strong> – Chaitanya Junior College, Nandigama</li>
+        <li><strong>SSC</strong> – Viswavani Vidhyalayam, Nawabpet</li>
+      </ul>
+    </section>
 
-// Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.section').forEach(section => {
-    observer.observe(section);
-});
-
-// Counter animation
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    
-    counters.forEach(counter => {
-        const target = parseInt(counter.textContent);
-        const increment = target / 50;
-        let current = 0;
-        
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                counter.textContent = target + (counter.textContent.includes('%') ? '%' : '+');
-                clearInterval(timer);
-            } else {
-                counter.textContent = Math.floor(current) + (counter.textContent.includes('%') ? '%' : '+');
-            }
-        }, 30);
-    });
-}
-
-// Trigger counter animation
-const aboutSection = document.getElementById('about');
-const aboutObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            animateCounters();
-            aboutObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
-            
-
-aboutObserver.observe(aboutSection);
-
-// Smooth scrolling for all browsers
-document.documentElement.style.scrollBehavior = 'smooth';
+    <footer>
+      <p>&copy; 2025 Pavan Kumar Chinthati. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
