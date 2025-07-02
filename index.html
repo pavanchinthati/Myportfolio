@@ -1,102 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Pavan Kumar Chinthati, Software Engineer specializing in Python, FastAPI, Kubernetes and Cybersecurity.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pavan Kumar Chinthati - Portfolio</title>
-  <link rel="icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-papb6CkY0ZP+y1ksGp3SgOAVTn+b9rpwBMSzQJptvJbM2KnZpqXUvEMefB8c2JrTzwobHJpSg+YQukA3kgrUDg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
-    * { box-sizing: border-box; scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to right, #ffffff, #f0f9ff);
+      background-color: #f3f4f6;
       color: #1f2937;
     }
+
     .container {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 2rem auto;
       padding: 2rem;
-      background: white;
+      background: #ffffff;
       border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      animation: fadeIn 1s ease;
     }
-    header {
-      text-align: center;
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
+
+    h1, h2, h3 {
+      color: #2563eb;
+    }
+
     h1 {
-      font-size: 3rem;
-      color: #0ea5e9;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
+
     h2 {
-      font-size: 2rem;
-      color: #0369a1;
-      border-bottom: 2px solid #bae6fd;
-      padding-bottom: 0.5rem;
-      margin-top: 2.5rem;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 0.3rem;
+      margin-top: 2rem;
     }
+
     h3 {
       font-size: 1.3rem;
-      color: #0284c7;
-      margin-top: 1.5rem;
-    }
-    ul { padding-left: 1.5rem; }
-    li { margin-bottom: 0.5rem; }
-    a {
-      color: #0284c7;
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
-    .section {
-      margin: 2rem 0;
-      background-color: #f8fafc;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-    .download-btn {
-      display: inline-block;
       margin-top: 1rem;
-      padding: 0.6rem 1.2rem;
-      background-color: #0284c7;
-      color: white;
-      border-radius: 6px;
+    }
+
+    p, li {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: #1d4ed8;
       text-decoration: none;
-      transition: 0.3s ease;
+      transition: color 0.3s ease;
     }
-    .download-btn:hover { background-color: #0369a1; }
-    .icon-text { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem; }
-    .profile-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #bae6fd;
-      margin: 0 auto 1rem;
+
+    a:hover {
+      color: #2563eb;
+      text-decoration: underline;
     }
+
+    .highlight {
+      background-color: #eff6ff;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
     footer {
       text-align: center;
       margin-top: 3rem;
-      font-size: 0.95rem;
-      color: #64748b;
+      font-size: 0.9rem;
+      color: #6b7280;
     }
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      h2 { font-size: 1.5rem; }
+
+    .section {
+      margin-top: 2rem;
+    }
+
+    .fade-section {
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .contact p {
+      margin: 0.3rem 0;
+    }
+
+    .card {
+      background-color: #f9fafb;
+      border-left: 4px solid #3b82f6;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container fade-section">
     <header>
-      <img src="avatar.jpg" alt="Profile Photo" class="profile-img">
       <h1>Pavan Kumar Chinthati</h1>
-      <p class="icon-text"><i class="fas fa-envelope"></i><a href="mailto:chinthatipavanchowdary@gmail.com">chinthatipavanchowdary@gmail.com</a></p>
-      <p class="icon-text"><i class="fas fa-phone"></i>+91 9182564738</p>
-      <a href="Pavan_Kumar_Chinthati_Resume.pdf" class="download-btn" download>📄 Download Resume</a>
+      <div class="highlight">Software Engineer</div>
+      <div class="contact">
+        <p>Email: <a href="mailto:chinthatipavanchowdary@gmail.com">chinthatipavanchowdary@gmail.com</a></p>
+        <p>Phone: +91 9182564738</p>
+      </div>
     </header>
 
     <section class="section">
@@ -104,62 +135,59 @@
       <p>
         A dynamic and results-driven software engineer with over 3 years of experience in product development,
         microservices architecture, and cloud-based solutions. I am seeking a challenging role where I can leverage my
-        expertise in Python, Django, REST APIs, and database management to drive innovative projects.
+        expertise in Python, Django, REST APIs, and database management to drive innovative projects. With a strong
+        background in automation, data streaming, and cloud orchestration using Kubernetes and AWS, I am eager to
+        contribute to a forward-thinking organization that values cutting-edge technology and fosters a culture of
+        continuous learning and growth.
       </p>
     </section>
 
     <section class="section">
       <h2>Technical Skills</h2>
-      <ul>
-        <li><i class="fas fa-code"></i> Python, JavaScript</li>
-        <li><i class="fas fa-cubes"></i> Django, FastAPI, GraphQL</li>
-        <li><i class="fas fa-database"></i> PostgreSQL, Trino, GraphDB</li>
-        <li><i class="fas fa-stream"></i> Kafka, Flink</li>
-        <li><i class="fas fa-cloud"></i> AWS (S3, Lambda, SQS), Kubernetes</li>
-        <li><i class="fas fa-shield-alt"></i> SIEM (Security Information and Event Management)</li>
-        <li><i class="fas fa-code-branch"></i> Git</li>
-        <li><i class="fas fa-desktop"></i> Linux, Windows</li>
-        <li><i class="fas fa-sync"></i> Agile (Scrum)</li>
-      </ul>
+      <div class="card">
+        <ul>
+          <li><strong>Programming Languages:</strong> Python, JavaScript</li>
+          <li><strong>Frameworks:</strong> Django, FastAPI, GraphQL</li>
+          <li><strong>Databases:</strong> PostgreSQL, Trino, GraphDB</li>
+          <li><strong>Stream Processing:</strong> Kafka, Flink</li>
+          <li><strong>Cloud Platforms:</strong> AWS (S3, Lambda, SQS), Kubernetes</li>
+          <li><strong>Cyber Security:</strong> SIEM (Security Information and Event Management)</li>
+          <li><strong>Version Control:</strong> Git</li>
+          <li><strong>Operating Systems:</strong> Linux, Windows</li>
+          <li><strong>Methodologies:</strong> Agile (Scrum)</li>
+        </ul>
+      </div>
     </section>
 
     <section class="section">
       <h2>Professional Experience</h2>
-      <h3>Software Engineer – Blusapphire Cyber Systems Pvt Ltd (Feb 2022 – Present)</h3>
-      <ul>
-        <li>Built scalable microservices using FastAPI, Django, and Python with RESTful APIs.</li>
-        <li>Reduced MTTR by 40% using automated log alerting systems.</li>
-        <li>Optimized Trino performance via CronJobs and indexing strategies.</li>
-        <li>Integrated Kafka & Flink for real-time threat detection pipelines.</li>
-        <li>Developed rule conversion engine from Sigma to Flink SQL.</li>
-        <li>Collaborated cross-functionally with security teams to fine-tune detection logic.</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>Real-Time Alert System</strong> – Built a log monitoring service using Python, Kafka, and Flink. <a href="#">[GitHub]</a></li>
-        <li><strong>Rule Management Engine</strong> – Automated rule conversion using Sigma + Flink SQL. <a href="#">[Live Demo]</a></li>
-        <li><strong>Kubernetes Optimizer</strong> – Scheduled CronJobs to maintain and optimize Trino table structure.</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Certifications</h2>
-      <ul>
-        <li>AWS Certified Cloud Practitioner (Planned)</li>
-        <li>Kubernetes for Developers (in-progress)</li>
-      </ul>
+      <div class="card">
+        <h3>Software Engineer</h3>
+        <p><em>Blusapphire Cyber Systems Pvt Ltd, Feb 2022 – Present</em></p>
+        <ul>
+          <li>Built microservices using Python, FastAPI, and Django with low-latency APIs.</li>
+          <li>Integrated secure third-party APIs and optimized query performance in Trino.</li>
+          <li>Architected GraphDB schemas using Cypher; automated pipelines via Kafka + Memgraph.</li>
+          <li>Deployed CronJobs in Kubernetes for automating Trino table optimization.</li>
+          <li>Implemented real-time log monitoring with alerts for hosts and log gaps.</li>
+          <li>Automated deployments and processing using AWS Lambda, SQS, and S3.</li>
+          <li>Built threat detection pipelines using Flink + Kafka with rule-based filtering.</li>
+          <li>Converted Sigma rules from UI into real-time Flink SQL rules.</li>
+          <li>Improved threat detection accuracy with SIEM integration and analyst collaboration.</li>
+          <li>Authored detailed documentation for handovers, onboarding, and team learning.</li>
+        </ul>
+      </div>
     </section>
 
     <section class="section">
       <h2>Education</h2>
-      <ul>
-        <li><strong>B.Tech in Electronics & Communication Engineering</strong> – Amrita Sai Institute Of Science & Technology, Paritala</li>
-        <li><strong>Intermediate</strong> – Chaitanya Junior College, Nandigama</li>
-        <li><strong>SSC</strong> – Viswavani Vidhyalayam, Nawabpet</li>
-      </ul>
+      <div class="card">
+        <ul>
+          <li><strong>B.Tech in ECE</strong> - Amrita Sai Institute Of Science & Technology, Paritala, AP</li>
+          <li><strong>Intermediate</strong> - Chaitanya Junior College, Nandigama, AP</li>
+          <li><strong>SSC</strong> - Viswavani Vidhyalayam, Nawabpet, AP</li>
+        </ul>
+      </div>
     </section>
 
     <footer>
