@@ -14,7 +14,7 @@
       --dark-text: #1e293b;
       --card-bg: rgba(255,255,255,0.55);
       --shadow: 0 8px 32px rgba(30,64,175,0.08);
-      --radius: 18px;
+      --radius: 20px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -24,10 +24,17 @@
       background: linear-gradient(120deg, #f8fafc 60%, #e0e7ef 100%);
       color: var(--dark-text);
       min-height: 100vh;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
       transition: background 0.4s, color 0.4s;
     }
     a { color: var(--primary); text-decoration: none; }
     a:hover { color: var(--accent); }
+    a:focus, button:focus, input:focus, textarea:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
     .container {
       max-width: 900px;
       margin: auto;
@@ -35,8 +42,9 @@
     }
     /* Navbar */
     .navbar {
-      background: rgba(255,255,255,0.85);
-      box-shadow: 0 2px 16px rgba(37,99,235,0.07);
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 2px 12px rgba(37,99,235,0.06);
+      border-bottom: 1px solid #e0e7ef;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -56,26 +64,26 @@
       align-items: center;
     }
     .nav-logo {
-      font-size: 1.5rem;
+      font-size: 1.7rem;
       font-weight: 700;
       color: var(--primary);
       letter-spacing: 2px;
       text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
     .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.7rem;
       list-style: none;
       padding: 0;
       margin: 0;
     }
     .nav-links a {
-      font-size: 1rem;
+      font-size: 1.08rem;
       color: var(--dark-text);
       font-weight: 600;
-      letter-spacing: 0.5px;
-      border-radius: 6px;
-      padding: 0.3rem 0.7rem;
+      border-radius: 8px;
+      padding: 0.4rem 1.1rem;
       position: relative;
       overflow: hidden;
       transition: color 0.2s, background 0.2s;
@@ -129,12 +137,12 @@
     }
     /* Hero Section */
     .hero {
-      background: linear-gradient(120deg, #2563eb 60%, #f59e42 100%);
-      color: #fff;
+      background: rgba(255,255,255,0.55);
+      color: #1e293b;
       padding: 3.5rem 2rem 2.5rem 2rem;
       border-radius: var(--radius);
       text-align: center;
-      box-shadow: 0 8px 32px rgba(37,99,235,0.10);
+      box-shadow: 0 8px 32px rgba(37,99,235,0.13);
       margin-bottom: 2.5rem;
       position: relative;
       overflow: hidden;
@@ -142,8 +150,8 @@
       flex-direction: column;
       align-items: center;
       border: 1.5px solid #e0e7ef;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       transition: background 0.5s;
     }
     .hero-bg-shape {
@@ -169,10 +177,11 @@
     }
     .hero:hover {
       background: linear-gradient(120deg, var(--accent) 0%, var(--primary) 100%);
+      color: #fff;
     }
     .hero .profile-img {
-      width: 120px;
-      height: 120px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid #fff;
@@ -185,34 +194,34 @@
       box-shadow: 0 8px 32px rgba(37,99,235,0.18);
     }
     .hero h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
+      font-size: 2.5rem;
+      font-weight: 800;
       margin-bottom: 0.3rem;
       letter-spacing: -1px;
     }
     .hero .subtitle {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 500;
       margin-bottom: 1.2rem;
-      color: #fff;
+      color: var(--primary-dark);
     }
     .hero .tagline {
-      font-size: 1rem;
-      color: #f8fafc;
+      font-size: 1.08rem;
+      color: #64748b;
       margin-bottom: 1.2rem;
       font-style: italic;
     }
     .hero .contact {
-      font-size: 1rem;
+      font-size: 1.08rem;
       margin-bottom: 0.5rem;
-      color: #e0e7ef;
+      color: #334155;
       word-break: break-word;
       display: flex;
       flex-direction: column;
       gap: 0.3rem;
     }
     .hero .contact a {
-      color: #fff;
+      color: var(--primary-dark);
       font-weight: 600;
       text-decoration: underline;
       word-break: break-all;
@@ -232,15 +241,16 @@
     }
     /* Section & Card Styles */
     .section {
-      margin-top: 2.5rem;
+      margin-top: 3.5rem;
     }
     .section h2 {
-      font-size: 1.7rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #e0e7ef;
-      padding-bottom: 0.3rem;
-      letter-spacing: -0.5px;
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      border: none;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       display: flex;
       align-items: center;
       gap: 0.6rem;
@@ -249,20 +259,27 @@
       color: var(--accent);
       font-size: 1.3em;
       vertical-align: middle;
+      filter: drop-shadow(0 2px 4px rgba(245,158,66,0.13));
     }
     .skills-animated-icon {
       display: block;
       margin: 0 auto 1rem auto;
     }
-    .card {
-      background: var(--card-bg);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 1.7rem 1.4rem;
+    .card, .project-card, .hero {
+      background: rgba(255,255,255,0.55);
+      box-shadow: 0 8px 32px rgba(30,64,175,0.13);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      margin-bottom: 2rem;
-      border: 1px solid #e0e7ef;
+      border: 1px solid rgba(37,99,235,0.10);
+      backdrop-filter: blur(16px);
+    }
+    body.dark .card, body.dark .project-card, body.dark .hero {
+      background: rgba(30,41,59,0.92) !important;
+      box-shadow: 0 8px 32px rgba(30,64,175,0.22);
+      border: 1px solid #334155;
+    }
+    .card {
+      padding: 2.2rem 2rem;
+      margin-bottom: 2.5rem;
       transition: box-shadow 0.3s, transform 0.3s;
     }
     .card:hover { box-shadow: 0 16px 48px rgba(37,99,235,0.18); transform: translateY(-4px) scale(1.01);}
@@ -285,7 +302,7 @@
       border-radius: 16px;
       font-size: 1rem;
       margin-bottom: 0.3rem;
-      box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+      box-shadow: 0 2px 12px 0 rgba(37,99,235,0.10), 0 0 0 2px rgba(245,158,66,0.08);
       display: inline-block;
       letter-spacing: 0.2px;
       border: none;
@@ -303,16 +320,16 @@
       gap: 1.5rem;
     }
     .project-card {
-      background: var(--card-bg);
-      border-radius: 12px;
+      border-radius: 20px;
       box-shadow: 0 2px 12px rgba(37,99,235,0.07);
-      padding: 1.2rem 1rem;
+      padding: 2rem 1.5rem;
       transition: transform 0.2s, box-shadow 0.2s;
       border-left: 5px solid var(--primary);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       min-height: 210px;
+      background: rgba(255,255,255,0.55);
     }
     .project-card:hover {
       transform: translateY(-6px) scale(1.03);
@@ -321,7 +338,7 @@
     }
     .project-title {
       font-weight: 600;
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       margin-bottom: 0.4rem;
       color: var(--primary-dark);
       display: flex;
@@ -400,7 +417,7 @@
       color: #334155;
     }
     /* Animation & Footer */
-    .fade { opacity: 0; transform: translateY(30px); transition: opacity 1s, transform 1s; }
+    .fade { opacity: 0; transform: translateY(40px) scale(0.98); transition: opacity 1s, transform 1s cubic-bezier(.4,2,.6,1); }
     .fade.fade-in { opacity: 1; transform: none; }
     footer {
       text-align: center;
@@ -409,6 +426,10 @@
       margin: 2.5rem 0 1rem 0;
       letter-spacing: 0.2px;
       background: transparent;
+      border-top: 2px solid transparent;
+      border-image: linear-gradient(90deg, var(--primary), var(--accent)) 1;
+      margin-top: 4rem;
+      padding-top: 2rem;
     }
     .footer-social {
       margin-top: 1rem;
@@ -451,7 +472,7 @@
     body.dark .card,
     body.dark .project-card,
     body.dark .hero {
-      background: rgba(30,41,59,0.85) !important;
+      background: rgba(30,41,59,0.92) !important;
       color: #f1f5fa !important;
       border-color: #334155 !important;
     }
@@ -473,8 +494,52 @@
     body.dark .footer-social a {
       color: #f8fafc;
     }
+    /* Modern Button Styles */
+    button, input[type="submit"] {
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: #fff;
+      font-weight: 600;
+      padding: 0.7rem 2.2rem;
+      box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+      border: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    button:hover, input[type="submit"]:hover {
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      transform: translateY(-2px) scale(1.04);
+    }
+    /* Dark Mode Toggle Button */
+    #darkModeToggle {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 3000;
+      background: rgba(255,255,255,0.85);
+      color: var(--primary);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    body.dark #darkModeToggle {
+      background: rgba(30,41,59,0.92);
+      color: var(--accent);
+    }
+    #darkModeIcon {
+      transition: transform 0.4s cubic-bezier(.4,2,.6,1), color 0.3s;
+    }
+    body.dark #darkModeIcon {
+      transform: rotate(180deg) scale(1.1);
+    }
     @media (max-width: 700px) {
       .container { padding: 1.2rem 0.5rem; }
+      #darkModeToggle { top: 12px; right: 12px; width: 40px; height: 40px; }
       .hero {
         padding: 1.5rem 0.5rem 1.2rem 0.5rem;
       }
@@ -532,41 +597,24 @@
         font-size: 1.05rem;
       }
     }
-    /* Add this CSS inside your <style> tag for responsive top-right floating toggle */
-    #darkModeToggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 3000;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 44px;
-      height: 44px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-      font-size: 1.3rem;
-      cursor: pointer;
-      transition: background 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    @media (max-width: 700px) {
-      #darkModeToggle {
-        top: 12px;
-        right: 12px;
-        width: 40px;
-        height: 40px;
-        font-size: 1.1rem;
-      }
-    }
   </style>
 </head>
 <body>
   <!-- Dark Mode Toggle -->
   <button id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-    <span id="darkModeIcon">🌙</span>
+    <svg id="darkModeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="5" fill="currentColor"/>
+      <g id="rays">
+        <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
+        <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"/>
+        <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"/>
+        <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"/>
+      </g>
+    </svg>
   </button>
   <nav class="navbar">
     <div class="nav-container">
@@ -834,12 +882,31 @@
       navToggle.classList.toggle('active');
     });
 
-    // Dark mode toggle
+    // Dark mode toggle with SVG icon swap
     const darkModeToggle = document.getElementById('darkModeToggle');
     const darkModeIcon = document.getElementById('darkModeIcon');
     darkModeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark');
-      darkModeIcon.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+      // Animate rays for sun/moon effect
+      if (document.body.classList.contains('dark')) {
+        darkModeIcon.innerHTML = `
+          <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z" fill="currentColor"/>
+        `;
+      } else {
+        darkModeIcon.innerHTML = `
+          <circle cx="12" cy="12" r="5" fill="currentColor"/>
+          <g id="rays">
+            <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
+            <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"/>
+            <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"/>
+            <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"/>
+          </g>
+        `;
+      }
     });
   </script>
 </body>
