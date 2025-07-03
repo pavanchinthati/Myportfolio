@@ -4,59 +4,78 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pavan Kumar Chinthati - Portfolio</title>
+  <!-- Google Fonts for typography -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
+    /* =========================
+       CSS Variables and Reset
+       ========================= */
     :root {
       --primary: #2563eb;
       --primary-dark: #1e40af;
       --accent: #f59e42;
       --light-bg: #f8fafc;
-      --dark-text: #1e293b;
-      --card-bg: rgba(255,255,255,0.55);
-      --shadow: 0 8px 32px rgba(30,64,175,0.08);
-      --radius: 20px;
+      --dark-bg: #181f2a;
+      --card-bg: rgba(255,255,255,0.7);
+      --card-bg-dark: rgba(30,41,59,0.92);
+      --shadow: 0 8px 32px rgba(30,64,175,0.10);
+      --radius: 22px;
+      --gradient: linear-gradient(120deg, #2563eb 0%, #f59e42 100%);
+      --gradient-dark: linear-gradient(120deg, #232b3b 0%, #2563eb 100%);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(120deg, #f8fafc 60%, #e0e7ef 100%);
-      color: var(--dark-text);
+      background: var(--light-bg);
+      color: #1e293b;
       min-height: 100vh;
       font-size: 1.08rem;
       line-height: 1.7;
       letter-spacing: 0.01em;
       transition: background 0.4s, color 0.4s;
+      background: linear-gradient(120deg, #f8fafc 60%, #e0e7ef 100%);
     }
-    a { color: var(--primary); text-decoration: none; }
+    body.dark {
+      background: var(--dark-bg);
+      color: #f1f5fa;
+      background: linear-gradient(120deg, #181f2a 60%, #232b3b 100%);
+    }
+    a { color: var(--primary); text-decoration: none; transition: color 0.2s;}
     a:hover { color: var(--accent); }
     a:focus, button:focus, input:focus, textarea:focus {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
     .container {
-      max-width: 900px;
+      max-width: 950px;
       margin: auto;
       padding: 2.5rem 1.2rem 1rem 1.2rem;
     }
-    /* Navbar */
+    /* =========================
+       Navbar Styles
+       ========================= */
     .navbar {
-      background: rgba(255,255,255,0.92);
-      box-shadow: 0 2px 12px rgba(37,99,235,0.06);
-      border-bottom: 1px solid #e0e7ef;
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 2px 16px rgba(37,99,235,0.08);
+      border-bottom: 1.5px solid #e0e7ef;
       position: sticky;
       top: 0;
       z-index: 1000;
       animation: navfade 0.7s;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(14px);
+    }
+    body.dark .navbar {
+      background: rgba(30,41,59,0.97);
+      border-bottom: 1.5px solid #334155;
     }
     @keyframes navfade {
       from { opacity: 0; transform: translateY(-20px);}
       to { opacity: 1; transform: none;}
     }
     .nav-container {
-      max-width: 900px;
+      max-width: 950px;
       margin: auto;
       padding: 1rem 1.2rem;
       display: flex;
@@ -64,35 +83,38 @@
       align-items: center;
     }
     .nav-logo {
-      font-size: 1.7rem;
-      font-weight: 700;
+      font-size: 2rem;
+      font-weight: 800;
       color: var(--primary);
-      letter-spacing: 2px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .nav-links {
       display: flex;
-      gap: 1.7rem;
+      gap: 2rem;
       list-style: none;
       padding: 0;
       margin: 0;
     }
     .nav-links a {
       font-size: 1.08rem;
-      color: var(--dark-text);
+      color: inherit;
       font-weight: 600;
-      border-radius: 8px;
-      padding: 0.4rem 1.1rem;
+      border-radius: 12px;
+      padding: 0.5rem 1.2rem;
       position: relative;
       overflow: hidden;
       transition: color 0.2s, background 0.2s;
+      background: none;
     }
     .nav-links a::after {
       content: "";
       position: absolute;
       left: 0; right: 0; bottom: 0;
-      height: 2px;
+      height: 2.5px;
       background: var(--accent);
       transform: scaleX(0);
       transition: transform 0.3s;
@@ -103,6 +125,13 @@
     }
     .nav-links a:hover::after, .nav-links a:focus::after {
       transform: scaleX(1);
+    }
+    body.dark .nav-links a {
+      color: #f8fafc;
+    }
+    body.dark .nav-links a:hover {
+      background: #232b3b;
+      color: var(--accent);
     }
     /* Hamburger for mobile */
     .nav-toggle {
@@ -127,7 +156,7 @@
         background: #fff;
         box-shadow: 0 2px 8px rgba(0,0,0,0.07);
         margin-top: 0.5rem;
-        border-radius: 8px;
+        border-radius: 12px;
       }
       .nav-links.active { display: flex; }
       .nav-toggle { display: flex; }
@@ -135,11 +164,13 @@
       .nav-toggle.active div:nth-child(2) { opacity: 0; }
       .nav-toggle.active div:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
     }
-    /* Hero Section */
+    /* =========================
+       Hero Section Styles
+       ========================= */
     .hero {
-      background: rgba(255,255,255,0.55);
+      background: var(--card-bg);
       color: #1e293b;
-      padding: 3.5rem 2rem 2.5rem 2rem;
+      padding: 4rem 2rem 2.5rem 2rem;
       border-radius: var(--radius);
       text-align: center;
       box-shadow: 0 8px 32px rgba(37,99,235,0.13);
@@ -149,15 +180,22 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      border: 1.5px solid #e0e7ef;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      border: 2.5px solid #e0e7ef;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       transition: background 0.5s;
+      min-height: 420px;
+    }
+    body.dark .hero {
+      background: var(--card-bg-dark) !important;
+      border: 2.5px solid #334155;
+      color: #f1f5fa;
     }
     .hero-bg-shape {
       pointer-events: none;
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 120px; z-index: 0;
+      top: 0; left: 0; width: 100%; height: 140px; z-index: 0;
+      opacity: 0.18;
     }
     .hero > *:not(.hero-bg-shape) {
       position: relative;
@@ -167,7 +205,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(120deg, rgba(255,255,255,0.08), rgba(37,99,235,0.10));
+      background: linear-gradient(120deg, rgba(255,255,255,0.10), rgba(37,99,235,0.13));
       z-index: 0;
       animation: heroGradient 6s linear infinite alternate;
     }
@@ -175,16 +213,12 @@
       0% { opacity: 0.7; }
       100% { opacity: 1; }
     }
-    .hero:hover {
-      background: linear-gradient(120deg, var(--accent) 0%, var(--primary) 100%);
-      color: #fff;
-    }
     .hero .profile-img {
-      width: 130px;
-      height: 130px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid #fff;
+      border: 5px solid #fff;
       margin-bottom: 1.2rem;
       box-shadow: 0 4px 24px rgba(0,0,0,0.10);
       background: #e0e7ef;
@@ -194,22 +228,27 @@
       box-shadow: 0 8px 32px rgba(37,99,235,0.18);
     }
     .hero h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
+      font-size: 2.7rem;
+      font-weight: 900;
       margin-bottom: 0.3rem;
       letter-spacing: -1px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .hero .subtitle {
-      font-size: 1.2rem;
-      font-weight: 500;
+      font-size: 1.25rem;
+      font-weight: 600;
       margin-bottom: 1.2rem;
       color: var(--primary-dark);
+      letter-spacing: 0.04em;
     }
     .hero .tagline {
-      font-size: 1.08rem;
+      font-size: 1.13rem;
       color: #64748b;
       margin-bottom: 1.2rem;
       font-style: italic;
+      letter-spacing: 0.01em;
     }
     .hero .contact {
       font-size: 1.08rem;
@@ -230,30 +269,36 @@
     .hero .contact a:hover {
       color: var(--accent);
     }
-    /* Divider */
+    /* =========================
+       Divider
+       ========================= */
     .divider {
-      width: 60px;
-      height: 4px;
-      background: var(--accent);
-      border-radius: 2px;
+      width: 80px;
+      height: 5px;
+      background: var(--gradient);
+      border-radius: 3px;
       margin: 2.5rem auto 2rem auto;
-      opacity: 0.15;
+      opacity: 0.22;
+      box-shadow: 0 2px 8px rgba(245,158,66,0.10);
     }
-    /* Section & Card Styles */
+    /* =========================
+       Section & Card Styles
+       ========================= */
     .section {
       margin-top: 3.5rem;
     }
     .section h2 {
-      font-size: 2.1rem;
-      font-weight: 700;
+      font-size: 2.2rem;
+      font-weight: 800;
       margin-bottom: 1.5rem;
       border: none;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
+      background: var(--gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: flex;
       align-items: center;
       gap: 0.6rem;
+      letter-spacing: 0.01em;
     }
     .section h2 svg {
       color: var(--accent);
@@ -266,16 +311,16 @@
       margin: 0 auto 1rem auto;
     }
     .card, .project-card, .hero {
-      background: rgba(255,255,255,0.55);
+      background: var(--card-bg);
       box-shadow: 0 8px 32px rgba(30,64,175,0.13);
       border-radius: var(--radius);
-      border: 1px solid rgba(37,99,235,0.10);
+      border: 1.5px solid rgba(37,99,235,0.10);
       backdrop-filter: blur(16px);
     }
     body.dark .card, body.dark .project-card, body.dark .hero {
-      background: rgba(30,41,59,0.92) !important;
+      background: var(--card-bg-dark) !important;
       box-shadow: 0 8px 32px rgba(30,64,175,0.22);
-      border: 1px solid #334155;
+      border: 1.5px solid #334155;
     }
     .card {
       padding: 2.2rem 2rem;
@@ -285,7 +330,9 @@
     .card:hover { box-shadow: 0 16px 48px rgba(37,99,235,0.18); transform: translateY(-4px) scale(1.01);}
     ul { padding-left: 1.3rem; }
     li { margin-bottom: 0.6rem; }
-    /* Skills Chips */
+    /* =========================
+       Skills Chips
+       ========================= */
     .skills-list {
       display: flex;
       flex-wrap: wrap;
@@ -296,49 +343,51 @@
     }
     .skills-list li {
       font-family: 'Fira Mono', monospace;
-      background: linear-gradient(120deg, #2563eb 60%, #f59e42 100%);
+      background: var(--gradient);
       color: #fff;
-      padding: 0.4rem 1.1rem;
-      border-radius: 16px;
-      font-size: 1rem;
+      padding: 0.45rem 1.2rem;
+      border-radius: 18px;
+      font-size: 1.03rem;
       margin-bottom: 0.3rem;
       box-shadow: 0 2px 12px 0 rgba(37,99,235,0.10), 0 0 0 2px rgba(245,158,66,0.08);
       display: inline-block;
       letter-spacing: 0.2px;
       border: none;
-      transition: background 0.3s, color 0.2s;
+      transition: background 0.3s, color 0.2s, box-shadow 0.2s;
     }
     .skills-list li:hover {
       background: linear-gradient(120deg, var(--accent), var(--primary));
       color: #fff;
       box-shadow: 0 4px 16px rgba(245,158,66,0.18);
     }
-    /* Projects */
+    /* =========================
+       Projects Grid & Cards
+       ========================= */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
     }
     .project-card {
-      border-radius: 20px;
+      border-radius: 22px;
       box-shadow: 0 2px 12px rgba(37,99,235,0.07);
       padding: 2rem 1.5rem;
       transition: transform 0.2s, box-shadow 0.2s;
-      border-left: 5px solid var(--primary);
+      border-left: 6px solid var(--primary);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 210px;
-      background: rgba(255,255,255,0.55);
+      min-height: 220px;
+      background: var(--card-bg);
     }
     .project-card:hover {
       transform: translateY(-6px) scale(1.03);
       box-shadow: 0 6px 24px rgba(37,99,235,0.13);
-      border-left: 5px solid var(--accent);
+      border-left: 6px solid var(--accent);
     }
     .project-title {
-      font-weight: 600;
-      font-size: 1.18rem;
+      font-weight: 700;
+      font-size: 1.22rem;
       margin-bottom: 0.4rem;
       color: var(--primary-dark);
       display: flex;
@@ -354,14 +403,14 @@
     .project-tag {
       background: var(--accent);
       color: #fff;
-      font-size: 0.85rem;
-      border-radius: 6px;
-      padding: 0.2rem 0.7rem;
+      font-size: 0.93rem;
+      border-radius: 7px;
+      padding: 0.22rem 0.8rem;
       font-family: 'Fira Mono', monospace;
       letter-spacing: 0.2px;
     }
     .project-desc {
-      font-size: 1rem;
+      font-size: 1.03rem;
       color: #334155;
       margin-bottom: 0.7rem;
     }
@@ -375,7 +424,9 @@
     .project-links a:hover {
       color: var(--accent);
     }
-    /* Timeline */
+    /* =========================
+       Timeline Styles
+       ========================= */
     .timeline {
       border-left: 3px solid var(--primary);
       margin-left: 0.7rem;
@@ -400,34 +451,36 @@
     }
     .timeline-item:last-child { margin-bottom: 0; }
     .timeline-title {
-      font-weight: 600;
-      font-size: 1.1rem;
+      font-weight: 700;
+      font-size: 1.13rem;
       margin-bottom: 0.2rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
     .timeline-date {
-      font-size: 0.98rem;
+      font-size: 1.01rem;
       color: #64748b;
       margin-bottom: 0.5rem;
     }
     .timeline-desc {
-      font-size: 1rem;
+      font-size: 1.03rem;
       color: #334155;
     }
-    /* Animation & Footer */
+    /* =========================
+       Animation & Footer
+       ========================= */
     .fade { opacity: 0; transform: translateY(40px) scale(0.98); transition: opacity 1s, transform 1s cubic-bezier(.4,2,.6,1); }
     .fade.fade-in { opacity: 1; transform: none; }
     footer {
       text-align: center;
       color: #64748b;
-      font-size: 1rem;
+      font-size: 1.08rem;
       margin: 2.5rem 0 1rem 0;
       letter-spacing: 0.2px;
       background: transparent;
       border-top: 2px solid transparent;
-      border-image: linear-gradient(90deg, var(--primary), var(--accent)) 1;
+      border-image: var(--gradient) 1;
       margin-top: 4rem;
       padding-top: 2rem;
     }
@@ -439,7 +492,7 @@
     }
     .footer-social a {
       color: var(--primary-dark);
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       transition: color 0.2s;
     }
     .footer-social a:hover {
@@ -454,62 +507,36 @@
       color: #fff;
       border: none;
       border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      font-size: 1.5rem;
+      width: 52px;
+      height: 52px;
+      font-size: 1.7rem;
       cursor: pointer;
       box-shadow: 0 4px 16px rgba(0,0,0,0.15);
       z-index: 100;
       transition: background 0.2s;
     }
     #backToTop:hover { background: var(--accent);}
-    /* Dark Mode */
-    body.dark {
-      background: linear-gradient(120deg, #181f2a 60%, #232b3b 100%);
-      color: #f1f5fa;
-    }
-    body.dark .navbar,
-    body.dark .card,
-    body.dark .project-card,
-    body.dark .hero {
-      background: rgba(30,41,59,0.92) !important;
-      color: #f1f5fa !important;
-      border-color: #334155 !important;
-    }
-    body.dark .skills-list li {
-      background: linear-gradient(120deg, #1e40af 60%, #f59e42 100%);
-    }
-    body.dark .hero .contact a,
-    body.dark .nav-links a {
-      color: #f8fafc !important;
-    }
-    body.dark .nav-links a:hover {
-      background: #232b3b;
-      color: var(--accent) !important;
-    }
-    body.dark .divider {
-      background: var(--accent);
-      opacity: 0.3;
-    }
-    body.dark .footer-social a {
-      color: #f8fafc;
-    }
-    /* Modern Button Styles */
+    /* =========================
+       Button Styles
+       ========================= */
     button, input[type="submit"] {
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
+      background: var(--gradient);
       color: #fff;
-      font-weight: 600;
-      padding: 0.7rem 2.2rem;
+      font-weight: 700;
+      padding: 0.8rem 2.3rem;
       box-shadow: 0 2px 8px rgba(37,99,235,0.10);
       border: none;
+      font-size: 1.08rem;
       transition: background 0.2s, transform 0.2s;
     }
     button:hover, input[type="submit"]:hover {
       background: linear-gradient(90deg, var(--accent), var(--primary));
       transform: translateY(-2px) scale(1.04);
     }
-    /* Dark Mode Toggle Button */
+    /* =========================
+       Dark Mode Toggle Button
+       ========================= */
     #darkModeToggle {
       position: fixed;
       top: 24px;
@@ -519,8 +546,8 @@
       color: var(--primary);
       border: none;
       border-radius: 50%;
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.10);
       display: flex;
       align-items: center;
@@ -537,28 +564,32 @@
     body.dark #darkModeIcon {
       transform: rotate(180deg) scale(1.1);
     }
+    /* =========================
+       Responsive Styles
+       ========================= */
     @media (max-width: 700px) {
       .container { padding: 1.2rem 0.5rem; }
       #darkModeToggle { top: 12px; right: 12px; width: 40px; height: 40px; }
       .hero {
         padding: 1.5rem 0.5rem 1.2rem 0.5rem;
+        min-height: 320px;
       }
       .hero h1 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
       }
       .hero .subtitle {
-        font-size: 1rem;
+        font-size: 1.08rem;
       }
       .hero .tagline {
-        font-size: 0.95rem;
+        font-size: 0.98rem;
       }
       .hero .contact {
-        font-size: 0.95rem;
+        font-size: 0.98rem;
         gap: 0.1rem;
       }
-      .section h2 { font-size: 1.2rem; }
+      .section h2 { font-size: 1.3rem; }
       .card { padding: 1.1rem 0.7rem; }
-      .skills-list li { font-size: 0.95rem; }
+      .skills-list li { font-size: 0.98rem; }
       .projects-grid { grid-template-columns: 1fr; }
       .nav-container {
         flex-direction: column;
@@ -600,7 +631,9 @@
   </style>
 </head>
 <body>
-  <!-- Dark Mode Toggle -->
+  <!-- =========================
+       Dark Mode Toggle Button
+       ========================= -->
   <button id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
     <svg id="darkModeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
       <circle cx="12" cy="12" r="5" fill="currentColor"/>
@@ -616,6 +649,9 @@
       </g>
     </svg>
   </button>
+  <!-- =========================
+       Navigation Bar
+       ========================= -->
   <nav class="navbar">
     <div class="nav-container">
       <span class="nav-logo">Pavan Kumar</span>
@@ -635,10 +671,19 @@
     </div>
   </nav>
   <div class="container">
+    <!-- =========================
+         Hero Section
+         ========================= -->
     <div class="hero fade">
-      <!-- SVG Shape for Hero -->
-      <svg class="hero-bg-shape" width="100%" height="120" viewBox="0 0 900 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,80 Q300,140 600,60 Q900,0 900,120 L0,120 Z" fill="rgba(255,255,255,0.08)"/>
+      <!-- SVG Shape for Hero Background -->
+      <svg class="hero-bg-shape" width="100%" height="140" viewBox="0 0 900 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="heroGrad" x1="0" y1="0" x2="900" y2="140" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#2563eb" stop-opacity="0.18"/>
+            <stop offset="1" stop-color="#f59e42" stop-opacity="0.18"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,100 Q300,180 600,60 Q900,0 900,140 L0,140 Z" fill="url(#heroGrad)"/>
       </svg>
       <img src="https://avatars.githubusercontent.com/u/1048597?v=4" alt="Pavan Kumar Chinthati" class="profile-img" />
       <h1>Pavan Kumar Chinthati</h1>
@@ -650,7 +695,9 @@
       </div>
     </div>
     <div class="divider"></div>
-
+    <!-- =========================
+         About Section
+         ========================= -->
     <section class="section fade" id="about">
       <h2>
         <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 17.93c-3.95.49-7.43-2.54-7.93-6.45A7.978 7.978 0 014 12c0-.34.03-.67.07-1H7v2H5v2h2v2H5v2h2v2h2v-2h2v2h2v-2h2v-2h-2v-2h2v-2h-2v-2h2.93c.04.33.07.66.07 1 0 1.1-.22 2.16-.62 3.13-.4.97-.98 1.85-1.68 2.57z"/></svg>
@@ -665,14 +712,16 @@
         </p>
       </div>
     </section>
-
+    <!-- =========================
+         Skills Section
+         ========================= -->
     <section class="section fade" id="skills">
       <h2>
         <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 17.93c-3.95.49-7.43-2.54-7.93-6.45A7.978 7.978 0 014 12c0-.34.03-.67.07-1H7v2H5v2h2v2H5v2h2v2h2v-2h2v2h2v-2h2v-2h-2v-2h2v-2h-2v-2h2.93c.04.33.07.66.07 1 0 1.1-.22 2.16-.62 3.13-.4.97-.98 1.85-1.68 2.57z"/></svg>
         Technical Skills
       </h2>
       <div class="card">
-        <!-- Animated SVG Icon -->
+        <!-- Animated SVG Icon for Skills -->
         <svg class="skills-animated-icon" width="36" height="36" viewBox="0 0 36 36" fill="none">
           <circle cx="18" cy="18" r="16" stroke="#2563eb" stroke-width="4" opacity="0.2"/>
           <circle cx="18" cy="18" r="12" stroke="#f59e42" stroke-width="4">
@@ -701,13 +750,16 @@
         </ul>
       </div>
     </section>
-
+    <!-- =========================
+         Projects Section
+         ========================= -->
     <section class="section fade" id="projects">
       <h2>
         <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><path d="M12 2L2 7v7c0 5 4.03 9 9 9s9-4 9-9V7l-10-5zm0 2.18l7 3.11v5.7c0 4.08-3.06 7.44-7 7.93-3.94-.49-7-3.85-7-7.93v-5.7l7-3.11z"/></svg>
         Featured Projects
       </h2>
       <div class="projects-grid">
+        <!-- Project Card 1 -->
         <div class="project-card">
           <div class="project-title">
             <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7v7c0 5 4.03 9 9 9s9-4 9-9V7l-10-5zm0 2.18l7 3.11v5.7c0 4.08-3.06 7.44-7 7.93-3.94-.49-7-3.85-7-7.93v-5.7l7-3.11z"/></svg>
@@ -725,6 +777,7 @@
             <a href="https://github.com/pavanchinthati" target="_blank">GitHub</a>
           </div>
         </div>
+        <!-- Project Card 2 -->
         <div class="project-card">
           <div class="project-title">
             <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7v7c0 5 4.03 9 9 9s9-4 9-9V7l-10-5zm0 2.18l7 3.11v5.7c0 4.08-3.06 7.44-7 7.93-3.94-.49-7-3.85-7-7.93v-5.7l7-3.11z"/></svg>
@@ -742,6 +795,7 @@
             <a href="https://github.com/pavanchinthati" target="_blank">GitHub</a>
           </div>
         </div>
+        <!-- Project Card 3 -->
         <div class="project-card">
           <div class="project-title">
             <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7v7c0 5 4.03 9 9 9s9-4 9-9V7l-10-5zm0 2.18l7 3.11v5.7c0 4.08-3.06 7.44-7 7.93-3.94-.49-7-3.85-7-7.93v-5.7l7-3.11z"/></svg>
@@ -761,7 +815,9 @@
         </div>
       </div>
     </section>
-
+    <!-- =========================
+         Experience Section
+         ========================= -->
     <section class="section fade" id="experience">
       <h2>
         <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 17.93c-3.95.49-7.43-2.54-7.93-6.45A7.978 7.978 0 014 12c0-.34.03-.67.07-1H7v2H5v2h2v2H5v2h2v2h2v-2h2v2h2v-2h2v-2h-2v-2h2v-2h-2v-2h2.93c.04.33.07.66.07 1 0 1.1-.22 2.16-.62 3.13-.4.97-.98 1.85-1.68 2.57z"/></svg>
@@ -789,7 +845,9 @@
         </div>
       </div>
     </section>
-
+    <!-- =========================
+         Education Section
+         ========================= -->
     <section class="section fade" id="education">
       <h2>
         <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><path d="M12 2L2 7v7c0 5 4.03 9 9 9s9-4 9-9V7l-10-5zm0 2.18l7 3.11v5.7c0 4.08-3.06 7.44-7 7.93-3.94-.49-7-3.85-7-7.93v-5.7l7-3.11z"/></svg>
@@ -819,7 +877,9 @@
         </div>
       </div>
     </section>
-
+    <!-- =========================
+         Contact Section
+         ========================= -->
     <section class="section fade" id="contact">
       <h2>
         <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor"><path d="M21 8V7l-3 2-2-2-7 7 2 2 7-7 2 2 3-2z"/></svg>
@@ -831,26 +891,36 @@
           <input type="text" name="name" placeholder="Your Name" required style="padding:0.7rem; border-radius:7px; border:1px solid #dbeafe;"/>
           <input type="email" name="email" placeholder="Your Email" required style="padding:0.7rem; border-radius:7px; border:1px solid #dbeafe;"/>
           <textarea name="message" placeholder="Your Message" rows="4" required style="padding:0.7rem; border-radius:7px; border:1px solid #dbeafe;"></textarea>
-          <button type="submit" style="background:var(--primary);color:#fff;padding:0.7rem 1.5rem;border:none;border-radius:7px;font-size:1rem;cursor:pointer;transition:background 0.2s;">Send</button>
+          <button type="submit">Send</button>
         </form>
       </div>
     </section>
-
+    <!-- =========================
+         Footer Section
+         ========================= -->
     <footer>
       &copy; 2025 Pavan Kumar Chinthati. All rights reserved.
       <div class="footer-social">
+        <!-- GitHub Link -->
         <a href="https://github.com/pavanchinthati" target="_blank" aria-label="GitHub">
           <svg height="1.2em" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.41-5.25 5.7.42.36.79 1.08.79 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56C20.71 21.39 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5z"/></svg>
         </a>
+        <!-- LinkedIn Link -->
         <a href="https://linkedin.com/in/pavanchinthati" target="_blank" aria-label="LinkedIn">
           <svg height="1.2em" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm15.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.88v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z"/></svg>
         </a>
       </div>
     </footer>
   </div>
+  <!-- =========================
+       Back to Top Button
+       ========================= -->
   <button id="backToTop" aria-label="Back to top" title="Back to top">&#8679;</button>
+  <!-- =========================
+       JavaScript for Interactivity
+       ========================= -->
   <script>
-    // Reveal sections on scroll
+    // Reveal sections on scroll (fade-in effect)
     const sections = document.querySelectorAll('.fade');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -861,7 +931,7 @@
     }, { threshold: 0.1 });
     sections.forEach(section => observer.observe(section));
 
-    // Back to Top Button
+    // Back to Top Button functionality
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
