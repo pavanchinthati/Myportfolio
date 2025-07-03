@@ -527,81 +527,20 @@
       background: linear-gradient(90deg, var(--accent), var(--primary));
       transform: translateY(-2px) scale(1.04);
     }
-    /* Move the dark mode toggle button out of the main content flow and keep it always visible in the top right corner */
-    #darkModeToggle {
-      position: fixed;
-      top: 100px;
-      right: 24px;
-      z-index: 3000;
-      background: var(--primary);
-      /* color: #fff; */
-      color: #f59e42; /* Use accent color for contrast */
-      border: none;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-      cursor: pointer;
-      padding: 0;
-      /* Add this to ensure it stays above all content */
-      pointer-events: auto;
-    }
-
-    @media (max-width: 700px) {
-      #darkModeToggle {
-        top: 12px;
-        right: 12px;
-        width: 38px;
-        height: 38px;
-      }
-    }
-    #darkModeIcon {
-      width: 26px;
-      height: 26px;
-      transition: transform 0.4s cubic-bezier(.4,2,.6,1), color 0.3s;
-    }
+    /* Remove the dark mode toggle CSS */
+    #darkModeToggle,
+    #darkModeIcon,
+    body.dark #darkModeToggle,
     body.dark #darkModeIcon {
-      transform: rotate(180deg) scale(1.1);
-    }
-    @media (max-width: 700px) {
-      #darkModeToggle {
-        top: 12px;
-        right: 12px;
-        width: 38px;
-        height: 38px;
-      }
-      #darkModeIcon {
-        width: 20px;
-        height: 20px;
-      }
+      display: none !important;
     }
   </style>
 </head>
 <body>
-  <!-- Dark Mode Toggle Button -->
-  <button id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-    <svg id="darkModeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="5" fill="currentColor"/>
-      <g id="rays">
-        <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
-        <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"/>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"/>
-        <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"/>
-        <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"/>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"/>
-      </g>
-    </svg>
-  </button>
   <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="nav-container">
-      <span class="nav-logo" style="margin-right:auto;">Pavan Kumar</span>
+      <span class="nav-logo" style="margin-right:auto;">Pavan Chinthati</span>
       <div class="nav-toggle" aria-label="Toggle navigation" tabindex="0">
         <div></div>
         <div></div>
@@ -661,12 +600,12 @@
         Technical Skills
       </h2>
       <div class="card">
-        <svg class="skills-animated-icon" width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <!-- <svg class="skills-animated-icon" width="36" height="36" viewBox="0 0 36 36" fill="none">
           <circle cx="18" cy="18" r="16" stroke="#2563eb" stroke-width="4" opacity="0.2"/>
           <circle cx="18" cy="18" r="12" stroke="#f59e42" stroke-width="4">
             <animate attributeName="stroke-dasharray" values="0,75;75,0;0,75" dur="2s" repeatCount="indefinite"/>
           </circle>
-        </svg>
+        </svg> -->
         <ul class="skills-list">
           <li>Python</li>
           <li>JavaScript</li>
@@ -868,32 +807,6 @@
     navToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
       navToggle.classList.toggle('active');
-    });
-
-    // Dark mode toggle with SVG icon swap
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const darkModeIcon = document.getElementById('darkModeIcon');
-    darkModeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      if (document.body.classList.contains('dark')) {
-        darkModeIcon.innerHTML = `
-          <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z" fill="currentColor"/>
-        `;
-      } else {
-        darkModeIcon.innerHTML = `
-          <circle cx="12" cy="12" r="5" fill="currentColor"/>
-          <g id="rays">
-            <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"/>
-            <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"/>
-            <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"/>
-            <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"/>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"/>
-          </g>
-        `;
-      }
     });
   </script>
 </body>
